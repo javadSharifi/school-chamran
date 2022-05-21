@@ -1,6 +1,8 @@
 import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Search({ setCodMele }: { setCodMele: any }) {
   const validationSchema = Yup.object().shape({
@@ -11,9 +13,15 @@ function Search({ setCodMele }: { setCodMele: any }) {
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, { setErrors }) => {
-        console.log(values.cod);
-        setCodMele(values.cod);
+        axios.get(`/result`)
+          .then((res) => {
+            setCodMele(values.cod);
+          })
+          .catch((err) => {
+            toast.error("کد ملی وارد شده صحیح نمی باشد");
+          });
       }}
+      
       initialValues={{
         cod: "",
       }}

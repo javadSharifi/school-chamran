@@ -1,11 +1,13 @@
-import React, {useState } from "react";
-import {  Formik } from "formik";
+import React, { useState } from "react";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Educational from "./Educational";
 import Personal from "./Personal";
 import toast from "react-hot-toast";
 import "./swiper.css";
+import Register from "./Register";
+import axios from "axios";
 
 function Forms() {
   //Swiper
@@ -115,10 +117,15 @@ function Forms() {
   return (
     <Formik
       validationSchema={validationSchema}
-      onSubmit={async (values,actions) => {
-        toast.success("ثبت نام با موفقیت انجام شد");
-        actions.resetForm();
-        console.log(values)
+      onSubmit={async (values, actions) => {
+        axios.post("/register", values)
+          .then((res) => {
+            toast.success("ثبت نام با موفقیت انجام شد");
+            actions.resetForm();
+          })
+          .catch((err) => {
+            toast.error("خطا در ثبت نام");
+          });
       }}
       initialValues={{
         // ...educational.map(({name}) => ({ [name]: "" })),
