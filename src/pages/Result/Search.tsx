@@ -1,29 +1,31 @@
 import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import toast from "react-hot-toast";
+import axios from "libs/axios";
 
 function Search({ setResult }: { setResult: any }) {
   const validationSchema = Yup.object().shape({
-    cod: Yup.number().required("کد ملی را وارد رد کنید "),
+    national_code: Yup.number().required("کد ملی را وارد رد کنید "),
   });
 
   return (
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, { setErrors }) => {
-        axios.post(`api/pre-register/result`, values.cod)
-          .then((res) => {
-            setResult(res);
-          })
-          .catch((err) => {
-            toast.error("کد ملی وارد شده صحیح نمی باشد");
-          });
+        axios.get("sanctum/csrf-cookie").then((res) => {
+          axios
+            .post(`api/pre-register/result`, values.national_code)
+            .then((res) => {
+              setResult(res);
+            })
+            .catch((err) => {
+              toast.error("کد ملی وارد شده صحیح نمی باشد");
+            });
+        });
       }}
-
       initialValues={{
-        cod: "",
+        national_code: "",
       }}
     >
       {() => (

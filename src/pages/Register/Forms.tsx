@@ -6,8 +6,7 @@ import Educational from "./Educational";
 import Personal from "./Personal";
 import toast from "react-hot-toast";
 import "./swiper.css";
-import Register from "./Register";
-import axios from "axios";
+import axios from "libs/axios";
 
 function Forms() {
   //Swiper
@@ -118,14 +117,17 @@ function Forms() {
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, actions) => {
-        axios.post("api/pre-register", values)
-          .then((res) => {
-            toast.success("ثبت نام با موفقیت انجام شد");
-            actions.resetForm();
-          })
-          .catch((err) => {
-            toast.error("خطا در ثبت نام");
-          });
+        axios.get("sanctum/csrf-cookie").then((res) => {
+          axios
+            .post("api/pre-register", values)
+            .then((res) => {
+              toast.success("ثبت نام با موفقیت انجام شد");
+              actions.resetForm();
+            })
+            .catch((err) => {
+              toast.error("خطا در ثبت نام");
+            });
+        });
       }}
       initialValues={{
         // ...educational.map(({first_name}) => ({ [first_name]: "" })),
@@ -134,6 +136,7 @@ function Forms() {
         last_name: "",
         father_name: "",
         mobile_number: "",
+        address:'vvv',
         Phone: "",
         national_code: "",
         SeventhMath: "",
@@ -145,6 +148,7 @@ function Forms() {
         SeventhDiscipline: "",
         EighthDiscipline: "",
         NinthDiscipline: "",
+        
       }}
     >
       {() => (

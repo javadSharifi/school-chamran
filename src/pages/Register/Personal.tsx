@@ -38,7 +38,6 @@ function Personal({
       <div className="   flex h-[14%] w-full  flex-wrap justify-center md:h-[15%]">
         <button
           onClick={() => slideTo(2)}
-    
           className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[15rem] text-lg font-bold  text-white shadow-md"
         >
           صفحه بعدی

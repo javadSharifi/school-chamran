@@ -27,13 +27,15 @@ function Educational({
         ))}
       </div>
       <div className=" gap-6 flex h-[14%] w-full flex-wrap justify-center md:h-[15%]">
-        <button
+        <input
+          type="button"
+          value="بازگشت"
           onClick={() => slideTo(1)}
           className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[40%] md:w-[12rem] 
           text-lg font-bold  text-white shadow-md"
-        >
-          صفحه قبل
-        </button>
+        />
+
+
         <button
           type="submit"
           className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[40%] md:w-[12rem] 
@@ -41,6 +43,7 @@ function Educational({
         >
           ثبت
         </button>
+
       </div>
     </Form>
   );
