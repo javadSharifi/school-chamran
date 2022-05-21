@@ -65,27 +65,27 @@ function Forms() {
 
   const personal = [
     {
-      name: "name",
+      name: "first_name",
       placeholder: "نام",
       type: "text",
     },
     {
-      name: "family",
+      name: "last_name",
       placeholder: "نام خانوادگی",
       type: "text",
     },
     {
-      name: "cod",
+      name: "national_code",
       placeholder: "کد ملی",
       type: "number",
     },
     {
-      name: "nameDada",
+      name: "father_name",
       placeholder: "نام پدر",
       type: "text",
     },
     {
-      name: "phoneNumber",
+      name: "mobile_number",
       placeholder: "شماره همراه",
       type: "number",
     },
@@ -97,12 +97,12 @@ function Forms() {
   ];
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("  نام را وارد کنید"),
-    family: Yup.string().required("  نام خانوادگی را وارد کنید "),
-    nameDada: Yup.string().required("  نام پدر را وارد کنید "),
-    phoneNumber: Yup.number().required("  شماره تلفن را وارد کنید "),
+    first_name: Yup.string().required("  نام را وارد کنید"),
+    last_name: Yup.string().required("  نام خانوادگی را وارد کنید "),
+    father_name: Yup.string().required("  نام پدر را وارد کنید "),
+    mobile_number: Yup.number().required("  شماره تلفن را وارد کنید "),
     Phone: Yup.number().required("  شماره ثابت را وارد کنید "),
-    cod: Yup.number().required("  کد ملی را وارد کنید "),
+    national_code: Yup.number().required("  کد ملی را وارد کنید "),
     SeventhMath: Yup.number().required("  ریاضی هفتم را وارد کنید"),
     EighthMath: Yup.number().required("  ریاضی هشتم را وارد کنید"),
     NinthMath: Yup.number().required("  ریاضی نهم را وارد کنید"),
@@ -118,7 +118,7 @@ function Forms() {
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, actions) => {
-        axios.post("/register", values)
+        axios.post("api/pre-register", values)
           .then((res) => {
             toast.success("ثبت نام با موفقیت انجام شد");
             actions.resetForm();
@@ -128,14 +128,14 @@ function Forms() {
           });
       }}
       initialValues={{
-        // ...educational.map(({name}) => ({ [name]: "" })),
-        // ...personal.map(({name}) => ({ [name]: "" })),
-        name: "",
-        family: "",
-        nameDada: "",
-        phoneNumber: "",
+        // ...educational.map(({first_name}) => ({ [first_name]: "" })),
+        // ...personal.map(({first_name}) => ({ [first_name]: "" })),
+        first_name: "",
+        last_name: "",
+        father_name: "",
+        mobile_number: "",
         Phone: "",
-        cod: "",
+        national_code: "",
         SeventhMath: "",
         EighthMath: "",
         NinthMath: "",

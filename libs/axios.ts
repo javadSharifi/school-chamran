@@ -2,12 +2,7 @@
 import { default as mainAxios } from 'axios';
 
 const axios = mainAxios.create({
-  baseURL : process.env.BASE_URL,
-  withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  },
+  baseURL : "http://localhost:8000/",
 });
 
 export default axios;

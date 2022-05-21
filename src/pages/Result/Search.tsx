@@ -13,7 +13,7 @@ function Search({ setResult }: { setResult: any }) {
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, { setErrors }) => {
-        axios.post(`/result`, values.cod)
+        axios.post(`api/pre-register/result`, values.cod)
           .then((res) => {
             setResult(res);
           })
