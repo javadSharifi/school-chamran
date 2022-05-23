@@ -16,7 +16,7 @@ function Personal({
   personal: personal[];
 }) {
   return (
-    <div className="flex  h-full   w-full  flex-col flex-wrap items-center pt-20">
+    <div className="flex  h-full   w-full  flex-col flex-wrap items-center pt-14">
       <>
         <div>
           <h1 className=" h-[5%]  text-center  text-2xl font-bold">
@@ -25,13 +25,18 @@ function Personal({
         </div>
         <Form className=" grid h-[75%] w-[95%] grid-cols-2  gap-x-3  overflow-y-auto  lg:w-[80%] ">
           {nameForm.map(({ name, placeholder, type }) => (
-            <InputForm
-              key={name}
-              name={name}
-              placeholder={placeholder}
-              type={type}
-            />
+            <div className="flex flex-wrap justify-center items-center">
+              <InputForm
+                key={name}
+                name={name}
+                placeholder={placeholder}
+                type={type}
+              />
+            </div>
           ))}
+          <div className="col-span-2  w-full relative flex  justify-center">
+            <InputForm name="address" placeholder="آدرس" type="text" />
+          </div>
         </Form>
       </>
 

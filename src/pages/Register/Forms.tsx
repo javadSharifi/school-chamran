@@ -102,6 +102,7 @@ function Forms() {
     mobile_number: Yup.number().required("  شماره تلفن را وارد کنید "),
     Phone: Yup.number().required("  شماره ثابت را وارد کنید "),
     national_code: Yup.number().required("  کد ملی را وارد کنید "),
+    address: Yup.string().required("  آدرس را وارد کنید "),
     SeventhMath: Yup.number().required("  ریاضی هفتم را وارد کنید"),
     EighthMath: Yup.number().required("  ریاضی هشتم را وارد کنید"),
     NinthMath: Yup.number().required("  ریاضی نهم را وارد کنید"),
@@ -117,6 +118,9 @@ function Forms() {
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, actions) => {
+        toast.loading("در حال ارسال اطلاعات", {
+          duration: 2500,
+        });
         axios.get("sanctum/csrf-cookie").then((res) => {
           axios
             .post("api/pre-register", values)
@@ -136,7 +140,7 @@ function Forms() {
         last_name: "",
         father_name: "",
         mobile_number: "",
-        address:'vvv',
+        address: "",
         Phone: "",
         national_code: "",
         SeventhMath: "",
@@ -148,7 +152,6 @@ function Forms() {
         SeventhDiscipline: "",
         EighthDiscipline: "",
         NinthDiscipline: "",
-        
       }}
     >
       {() => (

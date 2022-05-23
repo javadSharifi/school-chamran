@@ -16,7 +16,7 @@ function Register() {
         >
           <img
             src={IBoy}
-            className="absolute  w-[130px] -translate-y-16 rounded-full    border-t-[3px] border-gray-300/70 bg-slate-100 object-cover p-2  "
+            className="absolute  w-[130px] -translate-y-[+4.5rem] rounded-full    border-t-[3px] border-gray-300/70 bg-slate-100 object-cover p-2  "
             alt=""
           />
 

@@ -8,7 +8,7 @@ type validationForm = {
 
 function InputForm({ name, placeholder, type }: validationForm) {
   return (
-    <div dir="rtl" className="form-control  h-[80%] w-full max-w-xs ">
+    <div dir="rtl" className="form-control   h-[80%] w-[95%]  sm:w-[80%]  ">
       <label className="label">
         <span className="label-text mx-4 text-base font-bold">
           {placeholder}
