@@ -8,10 +8,11 @@ function Result() {
   type result = {
     condition:string,
     name: string;
+    data:string
   };
 
 
-  const [result, setResult] = useState<result|null>()
+  const [results, setResult] = useState<result|null>()
 
   return (
     <>
@@ -26,7 +27,7 @@ function Result() {
         className="absolute  w-[130px] -translate-y-16 rounded-full    border-t-[3px] border-gray-300/70 bg-slate-100 object-cover p-2  "
         alt=""
       />
-      {result ? <Answer condition={result.condition} setResult={setResult} name={result.name} /> : <Search setResult={setResult} />}
+      {results ? <Answer condition={results.data} setResult={setResult} name={results.name} /> : <Search setResult={setResult} />}
         </label>
       </label>
     </>

@@ -13,11 +13,15 @@ function Search({ setResult }: { setResult: any }) {
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, { setErrors }) => {
+        toast.loading("در حال ارسال اطلاعات",
+        {
+          duration : 2500
+        })
         axios.get("sanctum/csrf-cookie").then((res) => {
           axios
-            .post(`api/pre-register/result`, values.national_code)
+            .post(`api/pre-register/result`, values)
             .then((res) => {
-              setResult(res);
+              setResult(res.data);
             })
             .catch((err) => {
               toast.error("کد ملی وارد شده صحیح نمی باشد");
@@ -34,10 +38,10 @@ function Search({ setResult }: { setResult: any }) {
             dir="rtl"
             type="number"
             placeholder="کد ملی"
-            name="cod"
+            name="national_code"
             className="  input-search h-14 w-[70%] "
           />
-          <ErrorMessage name="cod" component="p" className="text-red-600 " />
+          <ErrorMessage name="national_code" component="p" className="text-red-600 " />
           <div className="w-full flex justify-center">
             <button
               type="submit"

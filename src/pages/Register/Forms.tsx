@@ -135,7 +135,7 @@ function Forms() {
       }}
       initialValues={{
         // ...educational.map(({first_name}) => ({ [first_name]: "" })),
-        // ...personal.map(({first_name}) => ({ [first_name]: "" })),
+        // ...personal.map(({first_name}) => ۲({ [first_name]: "" })),
         first_name: "",
         last_name: "",
         father_name: "",

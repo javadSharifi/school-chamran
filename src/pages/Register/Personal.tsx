@@ -25,9 +25,9 @@ function Personal({
         </div>
         <Form className=" grid h-[75%] w-[95%] grid-cols-2  gap-x-3  overflow-y-auto  lg:w-[80%] ">
           {nameForm.map(({ name, placeholder, type }) => (
-            <div className="flex flex-wrap justify-center items-center">
+            <div key={name} className="flex flex-wrap justify-center items-center">
               <InputForm
-                key={name}
+    
                 name={name}
                 placeholder={placeholder}
                 type={type}
