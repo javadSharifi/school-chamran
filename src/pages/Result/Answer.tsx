@@ -1,19 +1,32 @@
-import React from "react";
-import IAccept from "assets/img/Accept.png";
-import IWaiting from "assets/img/waiting.png";
-import IFired from "assets/img/fired.png";
+import React from 'react';
+import IAccept from 'assets/img/Accept.png';
+import IWaiting from 'assets/img/waiting.png';
+import IFired from 'assets/img/fired.png';
 
 type Props = {
-  condition:string,
+  condition: string;
   setResult: any;
   name: string;
 };
 
-function Answer({ setResult,name,condition }: Props) {
+function Answer({ setResult, name, condition }: Props) {
+  const img: any =
+    condition === 'Approved'
+      ? IAccept
+      : condition === 'Pending'
+      ? IWaiting
+      : condition === 'Rejected'
+      ? IFired
+      : null;
+  const text: any =
+    condition === 'Approved'
+      ? 'تمام شده'
+      : condition === 'Pending'
+      ? 'در انتظار تایید'
+      : condition === 'Rejected'
+      ? 'رد شده'
+      : null;
 
-  const img:any=condition==='Approved'?IAccept:condition==='Pending'?IWaiting:condition==='Rejected'?IFired:null;
-  const text:any=condition==='Approved'?'تمام شده':condition==='Pending'?'در انتظار تایید':condition==='Rejected'?'رد شده':null;
-  
   return (
     <div className="mt-[4.5rem] flex w-full flex-col  flex-wrap items-center gap-2 text-xl font-bold  ">
       <div>
@@ -22,7 +35,17 @@ function Answer({ setResult,name,condition }: Props) {
       <div className="   h-[8rem] w-[9rem]">
         <img className="h-full w-full " src={img} alt="" />
       </div>
-      <div className={`text-xl ${condition==='Approved'?'text-green-300':condition==='Pending'?'text-gray-500':condition==='Rejected'?'text-red-300':null} `}>
+      <div
+        className={`text-xl ${
+          condition === 'Approved'
+            ? 'text-green-300'
+            : condition === 'Pending'
+            ? 'text-gray-500'
+            : condition === 'Rejected'
+            ? 'text-red-300'
+            : null
+        } `}
+      >
         <h1> {text}</h1>
       </div>
       <div className="mt-3">

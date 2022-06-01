@@ -1,10 +1,10 @@
-import React from "react";
-import Cart from "components/Cart";
-import Result from "./Result";
-import Register from "./Register";
-import img from "assets/img/school.jpg";
-import customer from "assets/img/Customer Survey-rafiki.svg";
-import review from "assets/img/Online Review-rafiki.svg";
+import React from 'react';
+import Cart from 'components/Cart';
+import Result from './Result';
+import Register from './Register';
+import img from 'assets/img/school.jpg';
+import customer from 'assets/img/Customer Survey-rafiki.svg';
+import review from 'assets/img/Online Review-rafiki.svg';
 
 function Home() {
   return (
@@ -28,7 +28,7 @@ function Home() {
             data-aos-duration="1000"
             className="text-center text-xl font-bold text-gray-500 lg:text-2xl"
           >
-             هنرستانی با بیش از  پنج دهه تجربه کاری در زمینه مهرت های فنی
+            هنرستانی با بیش از پنج دهه تجربه کاری در زمینه مهرت های فنی
           </h2>
         </div>
         <Result />
@@ -48,7 +48,7 @@ function Home() {
               htmlFor="Register"
               className=" modal-button btn-grad btn   btn-info  mx-6 text-lg font-bold text-white shadow-md "
             >
-             پیش ثبت نام 
+              پیش ثبت نام
             </label>
           </Cart>
         </div>

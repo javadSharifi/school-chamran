@@ -1,5 +1,5 @@
-import { Form } from "formik";
-import InputForm from "components/InputForm";
+import { Form } from 'formik';
+import InputForm from 'components/InputForm';
 
 type educational = {
   name: string;
@@ -15,7 +15,7 @@ function Educational({
   educational: educational[];
 }) {
   return (
-    <Form className="flex  h-full   w-full  flex-col flex-wrap items-center pt-16">
+    <Form className="flex flex-col flex-wrap items-center w-full h-full pt-16">
       <div className=" grid h-[80%] w-[95%] grid-cols-3 gap-x-3  overflow-y-auto lg:w-[80%]">
         {nameForm.map(({ name, placeholder, type }) => (
           <InputForm
@@ -31,19 +31,17 @@ function Educational({
           type="button"
           value="بازگشت"
           onClick={() => slideTo(1)}
-          className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[40%] md:w-[12rem] 
+          className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[40%] md:w-[12rem]
           text-lg font-bold  text-white shadow-md"
         />
 
-
         <button
           type="submit"
-          className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[40%] md:w-[12rem] 
+          className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[40%] md:w-[12rem]
           text-lg font-bold  text-white shadow-md"
         >
           ثبت
         </button>
-
       </div>
     </Form>
   );
