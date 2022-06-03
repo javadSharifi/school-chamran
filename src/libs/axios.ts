@@ -2,7 +2,7 @@ import mainAxios from 'axios';
 import { BACKEND_URL } from 'app/config';
 
 const axios = mainAxios.create({
-  baseURL: BACKEND_URL,
+  baseURL: 'http://localhost:8000',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

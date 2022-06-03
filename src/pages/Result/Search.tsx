@@ -3,28 +3,27 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import axios from 'libs/axios';
+import useResult from 'server/result';
 
 function Search({ setResult }: { setResult: any }) {
   const validationSchema = Yup.object().shape({
     national_code: Yup.number().required('کد ملی را وارد رد کنید '),
   });
 
+  const { mutate } = useResult();
+
   return (
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, { setErrors }) => {
-        toast.loading('در حال ارسال اطلاعات', {
-          duration: 2500,
-        });
-        axios.get('sanctum/csrf-cookie').then((res) => {
-          axios
-            .post(`api/pre-register/result`, values)
-            .then((res) => {
-              setResult(res.data);
-            })
-            .catch((err) => {
-              toast.error('کد ملی وارد شده صحیح نمی باشد');
-            });
+        mutate(values.national_code, {
+          onSuccess: (data) => {
+            console.log(data);
+            setResult(data);
+          },
+          onError: () => {
+            toast.error('کد ملی وارد شده صحیح نمی باشد');
+          },
         });
       }}
       initialValues={{
@@ -47,6 +46,7 @@ function Search({ setResult }: { setResult: any }) {
           />
           <div className="w-full flex justify-center">
             <button
+              // disabled={isLoading}
               type="submit"
               className=" btn-grad  btn-info  mb-16 h-12 w-[60%] text-lg font-bold  text-white shadow-md"
             >
