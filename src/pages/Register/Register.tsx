@@ -2,6 +2,7 @@ import IBoy from 'assets/img/boy.png';
 import Forms from './Forms';
 
 function Register() {
+  
   return (
     <>
       <input type="checkbox" id="Register" className="modal-toggle" />

@@ -18,7 +18,7 @@ function InputForm({ name, placeholder, type }: validationForm) {
         name={name}
         type={type}
         placeholder={placeholder}
-        className="w-full input-search h-14"
+        className="w-full font-bold text-sm text-gray-700 input-search h-14"
       />
       <ErrorMessage name={name} component="p" className="text-red-600 " />
     </div>

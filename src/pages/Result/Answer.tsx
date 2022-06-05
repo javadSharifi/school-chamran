@@ -20,11 +20,11 @@ function Answer({ setResult, name, condition }: Props) {
       : null;
   const text: any =
     condition === 'Approved'
-      ? 'تمام شده'
+      ? 'شما تایید شده اید'
       : condition === 'Pending'
       ? 'در انتظار تایید'
       : condition === 'Rejected'
-      ? 'رد شده'
+      ? 'شما پایین تر از حد انتظار بودید '
       : null;
 
   return (

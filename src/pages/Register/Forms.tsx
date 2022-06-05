@@ -19,14 +19,14 @@ function Forms() {
   return (
     <Formik
       validationSchema={validationSchema}
-      onSubmit={async (values, actions) => {
+      onSubmit={async (values, { resetForm }) => {
         mutate(values, {
           onSuccess: () => {
             toast.success('ثبت نام با موفقیت انجام شد');
-            actions.resetForm();
+            resetForm();
           },
           onError: (err: any) => {
-            toast.error(err.message);
+            toast.error(err.response.data.errors.national_code[0]);
           },
         });
       }}
@@ -36,17 +36,18 @@ function Forms() {
         father_name: '',
         mobile_number: '',
         address: '',
-        Phone: '',
+        phone: '',
         national_code: '',
-        SeventhMath: '',
-        EighthMath: '',
-        NinthMath: '',
-        SeventhScience: '',
-        EighthScience: '',
-        NinthScience: '',
-        SeventhDiscipline: '',
-        EighthDiscipline: '',
-        NinthDiscipline: '',
+        major: '',
+        seventhMath: '',
+        eighthMath: '',
+        ninthMath: '',
+        seventhScience: '',
+        eighthScience: '',
+        ninthScience: '',
+        seventhDiscipline: '',
+        eighthDiscipline: '',
+        ninthDiscipline: '',
       }}
     >
       {() => (

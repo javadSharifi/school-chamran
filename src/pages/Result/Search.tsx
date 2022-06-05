@@ -16,10 +16,10 @@ function Search({ setResult }: { setResult: any }) {
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, { setErrors }) => {
-        mutate(values.national_code, {
+        mutate({national_code:values.national_code}, {
           onSuccess: (data) => {
-            console.log(data);
-            setResult(data);
+            console.log(data)
+            setResult(data.data);
           },
           onError: () => {
             toast.error('کد ملی وارد شده صحیح نمی باشد');
