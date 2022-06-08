@@ -28,7 +28,7 @@ function Home() {
             data-aos-duration="1000"
             className="text-center text-xl font-bold text-gray-500 lg:text-2xl"
           >
-            هنرستانی با بیش از پنج دهه تجربه کاری در زمینه مهرت های فنی
+            هنرستانی با بیش از پنج دهه تجربه اموزش در زمینه مهارت های فنی
           </h2>
         </div>
         <Result />

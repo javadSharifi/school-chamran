@@ -48,7 +48,7 @@ function Personal({
               </span>
             </label>
             <Field
-              name="major"
+              name="major_id"
               className="w-full font-bold text-sm text-gray-700 input-search h-14"
               component="select"
             >
@@ -57,7 +57,7 @@ function Personal({
               </option>
               {isLoading === false &&
                 majors?.data.data.map((item: major) => (
-                  <option key={item.id} value={item.name}>
+                  <option key={item.id} value={item.id}>
                     {item.name}
                   </option>
                 ))}

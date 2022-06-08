@@ -8,7 +8,7 @@ export const validationSchema = Yup.object().shape({
   phone: Yup.number().required('  شماره ثابت را وارد کنید '),
   national_code: Yup.number().required('  کد ملی را وارد کنید '),
   address: Yup.string().required('  آدرس را وارد کنید '),
-  major: Yup.string().required('  رشته تحصیلی را وارد کنید '),
+  major_id: Yup.number().required('  رشته تحصیلی را وارد کنید '),
   seventhMath: Yup.number().required('  ریاضی هفتم را وارد کنید'),
   eighthMath: Yup.number().required('  ریاضی هشتم را وارد کنید'),
   ninthMath: Yup.number().required('  ریاضی نهم را وارد کنید'),
@@ -103,5 +103,5 @@ export const personal = [
     name: 'address',
     placeholder: 'آدرس',
     type: 'text',
-  }
+  },
 ];

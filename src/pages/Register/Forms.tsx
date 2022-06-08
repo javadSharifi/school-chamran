@@ -20,6 +20,7 @@ function Forms() {
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, { resetForm }) => {
+        console.log(values);
         mutate(values, {
           onSuccess: () => {
             toast.success('ثبت نام با موفقیت انجام شد');
@@ -38,7 +39,7 @@ function Forms() {
         address: '',
         phone: '',
         national_code: '',
-        major: '',
+        major_id: '',
         seventhMath: '',
         eighthMath: '',
         ninthMath: '',
