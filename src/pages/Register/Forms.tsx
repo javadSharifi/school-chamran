@@ -15,12 +15,16 @@ function Forms() {
   const slideTo = (index: any) => {
     swiperRef.slideTo(index - 1, 0);
   };
+  const initialValues = [...personal, ...educational].reduce((acc, curr) => {
+  console.log(acc);
+    acc[curr.name] = '';
+    return acc;
+  }, {} as { [key: string]: string });
 
   return (
     <Formik
       validationSchema={validationSchema}
       onSubmit={async (values, { resetForm }) => {
-        console.log(values);
         mutate(values, {
           onSuccess: () => {
             toast.success('ثبت نام با موفقیت انجام شد');
@@ -31,25 +35,7 @@ function Forms() {
           },
         });
       }}
-      initialValues={{
-        first_name: '',
-        last_name: '',
-        father_name: '',
-        mobile_number: '',
-        address: '',
-        phone: '',
-        national_code: '',
-        major_id: '',
-        seventhMath: '',
-        eighthMath: '',
-        ninthMath: '',
-        seventhScience: '',
-        eighthScience: '',
-        ninthScience: '',
-        seventhDiscipline: '',
-        eighthDiscipline: '',
-        ninthDiscipline: '',
-      }}
+      initialValues={initialValues}
     >
       {() => (
         <Swiper cssMode={true} onSwiper={setSwiperRef}>

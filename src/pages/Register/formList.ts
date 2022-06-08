@@ -1,23 +1,31 @@
+import validationError from 'utils/validation';
 import * as Yup from 'yup';
 
+
+
 export const validationSchema = Yup.object().shape({
-  first_name: Yup.string().required('  نام را وارد کنید'),
-  last_name: Yup.string().required('  نام خانوادگی را وارد کنید '),
-  father_name: Yup.string().required('  نام پدر را وارد کنید '),
-  mobile_number: Yup.number().required('  شماره تلفن را وارد کنید '),
-  phone: Yup.number().required('  شماره ثابت را وارد کنید '),
-  national_code: Yup.number().required('  کد ملی را وارد کنید '),
-  address: Yup.string().required('  آدرس را وارد کنید '),
-  major_id: Yup.number().required('  رشته تحصیلی را وارد کنید '),
-  seventhMath: Yup.number().required('  ریاضی هفتم را وارد کنید'),
-  eighthMath: Yup.number().required('  ریاضی هشتم را وارد کنید'),
-  ninthMath: Yup.number().required('  ریاضی نهم را وارد کنید'),
-  seventhScience: Yup.number().required('  علوم هفتم را وارد کنید'),
-  eighthScience: Yup.number().required('  علوم هشتم را وارد کنید'),
-  ninthScience: Yup.number().required('  علوم نهم را وارد کنید'),
-  seventhDiscipline: Yup.number().required('  انضباط هفتم را وارد کنید'),
-  eighthDiscipline: Yup.number().required('  انضباط هشتم را وارد کنید'),
-  ninthDiscipline: Yup.number().required('  انضباط نهم را وارد کنید'),
+   
+  first_name: Yup.string().required(validationError('required')),
+  last_name: Yup.string().required(validationError('required')),
+  father_name: Yup.string().required(validationError('required')),
+  mobile_number: Yup.number().required(validationError('required')),
+  phone: Yup.number().required(validationError('required')),
+  national_code: Yup.number().required(validationError('required')),
+  address: Yup.string().required(validationError('required')),
+  major_id: Yup.number().required(validationError('required')),
+
+  seventhMath: Yup.number().required(validationError('required')),
+  eighthMath: Yup.number().required(validationError('required')),
+  ninthMath: Yup.number().required(validationError('required')),
+  seventhScience: Yup.number().required(validationError('required')),
+  eighthScience: Yup.number().required(validationError('required')),
+  ninthScience: Yup.number().required(validationError('required')),
+  seventhDiscipline: Yup.number().required(validationError('required')),
+  eighthDiscipline: Yup.number().required(validationError('required')),
+  ninthDiscipline: Yup.number()
+    .required(validationError('required'))
+    .min(8, validationError('min', 8))
+    .max(10, validationError('max', 10)),
 });
 
 export const educational = [

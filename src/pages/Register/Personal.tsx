@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ErrorMessage, Field, Form } from 'formik';
 import InputForm from 'components/InputForm';
 import useMajors from 'server/majors';
@@ -21,7 +21,7 @@ function Personal({
   slideTo: any;
   personal: personal[];
 }) {
-  const { data: majors, isLoading } = useMajors();
+  const { data: majors } = useMajors();
 
   return (
     <div className="flex flex-col items-center w-full h-full pt-14">
@@ -49,18 +49,14 @@ function Personal({
             </label>
             <Field
               name="major_id"
-              className="w-full font-bold text-sm text-gray-700 input-search h-14"
+              className="w-full text-sm font-bold text-gray-700 input-search h-14"
               component="select"
             >
-              <option disabled selected>
-                رشته خود را انتخاب کن
-              </option>
-              {isLoading === false &&
-                majors?.data.data.map((item: major) => (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                ))}
+              {majors?.data.data.map((item: major) => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              ))}
               ;
             </Field>
             <ErrorMessage

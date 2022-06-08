@@ -2,15 +2,15 @@ import React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
-import axios from 'libs/axios';
 import useResult from 'server/result';
+import validationError from 'utils/validation';
 
 function Search({ setResult }: { setResult: any }) {
   const validationSchema = Yup.object().shape({
-    national_code: Yup.number().required('کد ملی را وارد رد کنید '),
+    national_code: Yup.number().required(validationError('required')),
   });
 
-  const { mutate } = useResult();
+  const { mutate, isLoading } = useResult();
 
   return (
     <Formik
@@ -20,7 +20,6 @@ function Search({ setResult }: { setResult: any }) {
           { national_code: values.national_code },
           {
             onSuccess: (data) => {
-              console.log(data);
               setResult(data.data);
             },
             onError: () => {
@@ -47,11 +46,11 @@ function Search({ setResult }: { setResult: any }) {
             component="p"
             className="text-red-600 "
           />
-          <div className="w-full flex justify-center">
+          <div className="flex justify-center w-full">
             <button
-              // disabled={isLoading}
+              disabled={isLoading}
               type="submit"
-              className=" btn-grad  btn-info  mb-16 h-12 w-[60%] text-lg font-bold  text-white shadow-md"
+              className=" btn-grad  btn-info  mb-16 h-12 w-[60%] text-lg font-bold  text-white shadow-md disabled:opacity-50"
             >
               جستجو
             </button>
