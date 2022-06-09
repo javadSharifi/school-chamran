@@ -2,6 +2,7 @@ const rules = {
   required: 'وارد کردن این فیلد الزامی است',
   min: 'حداقل تعداد کاراکتر های این فیلد :1 است',
   max: 'حداکثر تعداد کاراکتر های این فیلد :1 است',
+  MaxEducational: 'حد اکثر  نمره 20 است',
 };
 
 function replaceArguments(str: string, ...args: any[]) {

@@ -33,7 +33,7 @@ function Home() {
         </div>
         <Result />
         <Register />
-        <div className="grid  h-[75%] w-full   grid-rows-2 gap-3 overflow-hidden  sm:grid-cols-2 sm:grid-rows-none  ">
+        <div className="grid   h-[75%] w-full   grid-rows-2 gap-3 overflow-hidden  sm:grid-cols-2 sm:grid-rows-none  ">
           <Cart img={review}>
             <label
               htmlFor="Result"

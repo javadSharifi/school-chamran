@@ -10,13 +10,12 @@ import { educational, personal, validationSchema } from './formList';
 import useRegister from 'server/register';
 
 function Forms() {
-  const { mutate } = useRegister();
+  const { mutate, isLoading } = useRegister();
   const [swiperRef, setSwiperRef] = useState<any>(null);
   const slideTo = (index: any) => {
     swiperRef.slideTo(index - 1, 0);
   };
   const initialValues = [...personal, ...educational].reduce((acc, curr) => {
-  console.log(acc);
     acc[curr.name] = '';
     return acc;
   }, {} as { [key: string]: string });
@@ -44,7 +43,11 @@ function Forms() {
               <Personal slideTo={slideTo} personal={personal} />
             </SwiperSlide>
             <SwiperSlide>
-              <Educational slideTo={slideTo} educational={educational} />
+              <Educational
+                isLoading={isLoading}
+                slideTo={slideTo}
+                educational={educational}
+              />
             </SwiperSlide>
           </Swiper>
         </Swiper>

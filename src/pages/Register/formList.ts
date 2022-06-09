@@ -1,10 +1,7 @@
 import validationError from 'utils/validation';
 import * as Yup from 'yup';
 
-
-
 export const validationSchema = Yup.object().shape({
-   
   first_name: Yup.string().required(validationError('required')),
   last_name: Yup.string().required(validationError('required')),
   father_name: Yup.string().required(validationError('required')),
@@ -14,18 +11,33 @@ export const validationSchema = Yup.object().shape({
   address: Yup.string().required(validationError('required')),
   major_id: Yup.number().required(validationError('required')),
 
-  seventhMath: Yup.number().required(validationError('required')),
-  eighthMath: Yup.number().required(validationError('required')),
-  ninthMath: Yup.number().required(validationError('required')),
-  seventhScience: Yup.number().required(validationError('required')),
-  eighthScience: Yup.number().required(validationError('required')),
-  ninthScience: Yup.number().required(validationError('required')),
-  seventhDiscipline: Yup.number().required(validationError('required')),
-  eighthDiscipline: Yup.number().required(validationError('required')),
+  seventhMath: Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20)),
+  eighthMath: Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20)),
+  ninthMath: Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20)),
+  seventhScience: Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20)),
+  eighthScience: Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20)),
+  ninthScience: Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20)),
+  seventhDiscipline: Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20)),
+  eighthDiscipline: Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20)),
   ninthDiscipline: Yup.number()
     .required(validationError('required'))
-    .min(8, validationError('min', 8))
-    .max(10, validationError('max', 10)),
+    .max(20, validationError('MaxEducational', 20)),
 });
 
 export const educational = [

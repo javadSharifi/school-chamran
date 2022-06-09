@@ -10,13 +10,15 @@ type educational = {
 function Educational({
   slideTo,
   educational: nameForm,
+  isLoading,
 }: {
   slideTo: any;
+  isLoading: boolean;
   educational: educational[];
 }) {
   return (
     <Form className="flex flex-col flex-wrap items-center w-full h-full pt-16">
-      <div className=" grid h-[80%] w-[95%] grid-cols-3 gap-x-3  overflow-y-auto lg:w-[80%]">
+      <div className=" grid h-[80%] w-[95%] grid-cols-2 md:grid-cols-3 gap-x-3  overflow-y-auto lg:w-[80%]">
         {nameForm.map(({ name, placeholder, type }) => (
           <InputForm
             key={name}
@@ -37,8 +39,9 @@ function Educational({
 
         <button
           type="submit"
+          disabled={isLoading}
           className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[40%] md:w-[12rem]
-          text-lg font-bold  text-white shadow-md"
+          text-lg font-bold  text-white shadow-md disabled:opacity-70 "
         >
           ثبت
         </button>
