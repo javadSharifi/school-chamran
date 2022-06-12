@@ -1,45 +1,6 @@
 import validationError from 'utils/validation';
 import * as Yup from 'yup';
 
-export const validationSchema = Yup.object().shape({
-  first_name: Yup.string().required(validationError('required')),
-  last_name: Yup.string().required(validationError('required')),
-  father_name: Yup.string().required(validationError('required')),
-  mobile_number: Yup.number().required(validationError('required')),
-  phone: Yup.number().required(validationError('required')),
-  national_code: Yup.number().required(validationError('required')),
-  address: Yup.string().required(validationError('required')),
-  major_id: Yup.number().required(validationError('required')),
-
-  seventhMath: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-  eighthMath: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-  ninthMath: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-  seventhScience: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-  eighthScience: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-  ninthScience: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-  seventhDiscipline: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-  eighthDiscipline: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-  ninthDiscipline: Yup.number()
-    .required(validationError('required'))
-    .max(20, validationError('MaxEducational', 20)),
-});
-
 export const educational = [
   {
     name: 'seventhMath',
@@ -125,3 +86,26 @@ export const personal = [
     type: 'text',
   },
 ];
+
+const educationalValidations= educational.reduce((acc, curr) => {
+  acc[curr.name] = Yup.number()
+    .required(validationError('required'))
+    .max(20, validationError('MaxEducational', 20))
+    .min(10, validationError('MinEducational', 10));
+  return acc;
+}, {} as any);
+
+
+
+export const validationSchema = Yup.object().shape({
+  first_name: Yup.string().required(validationError('required')),
+  last_name: Yup.string().required(validationError('required')),
+  father_name: Yup.string().required(validationError('required')),
+  mobile_number: Yup.string().required(validationError('required')).length(10, validationError('length', 11)),
+  phone: Yup.string().required(validationError('required')).length(9, validationError('length', 10)),
+  national_code: Yup.string().required(validationError('required')).length(10, validationError('length', 10)),
+  address: Yup.string().required(validationError('required')),
+  major_id: Yup.number().required(validationError('required')),
+
+  ...educationalValidations,
+});

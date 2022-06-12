@@ -1,5 +1,6 @@
 import { Form } from 'formik';
 import InputForm from 'components/InputForm';
+import spinner from 'assets/img/Spinner.svg';
 
 type educational = {
   name: string;
@@ -43,7 +44,7 @@ function Educational({
           className=" btn-grad  prepend-slide btn-info  my-4 h-[70%] w-[40%] md:w-[12rem]
           text-lg font-bold  text-white shadow-md disabled:opacity-70 "
         >
-          ثبت
+              {isLoading ? <img src ={spinner} className='w-full h-full ' alt="My Happy SVG"/> : 'ثبت'}
         </button>
       </div>
     </Form>

@@ -4,10 +4,11 @@ import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import useResult from 'server/result';
 import validationError from 'utils/validation';
+import spinner from 'assets/img/Spinner.svg';
 
 function Search({ setResult }: { setResult: any }) {
   const validationSchema = Yup.object().shape({
-    national_code: Yup.number().required(validationError('required')),
+    national_code: Yup.string().required(validationError('required')).length(10, validationError('length', 10)),
   });
 
   const { mutate, isLoading } = useResult();
@@ -39,7 +40,7 @@ function Search({ setResult }: { setResult: any }) {
             type="number"
             placeholder="کد ملی"
             name="national_code"
-            className="  input-search h-14 w-[70%] "
+            className="  text-gray-600 font-bold input-search h-14 w-[70%]  "
           />
           <ErrorMessage
             name="national_code"
@@ -50,9 +51,9 @@ function Search({ setResult }: { setResult: any }) {
             <button
               disabled={isLoading}
               type="submit"
-              className=" btn-grad  btn-info  mb-16 h-12 w-[60%] text-lg font-bold  text-white shadow-md disabled:opacity-50"
+              className=" btn-grad relative  btn-info  mb-16 h-12 w-[60%] text-lg font-bold  text-white shadow-md "
             >
-              جستجو
+              {isLoading ? <img src ={spinner} className='w-full h-full ' alt="My Happy SVG"/> : 'جستجو'}
             </button>
           </div>
         </Form>
